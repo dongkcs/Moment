@@ -4,7 +4,7 @@ import os
 from tortoise import Tortoise, connections
 from tortoise.exceptions import OperationalError
 
-from src.models import *
+from app.src.models import *
 
 
 async def run_migration():
