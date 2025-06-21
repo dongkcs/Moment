@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from app.core.dependency import DependPermisson
+from ...core.dependency import DependPermisson
 
 from .base import base_router
 from .menus import menus_router

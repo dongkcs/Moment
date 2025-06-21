@@ -3,10 +3,10 @@ from fastapi.middleware import Middleware
 from fastapi.middleware.cors import CORSMiddleware
 from tortoise.contrib.fastapi import register_tortoise
 
-from app.api import api_router
-from app.controllers.user import UserCreate, user_controller
-from app.controllers.setting import SettingCreate, setting_controller
-from app.core.exceptions import (
+from ..api import api_router
+from ..controllers.user import UserCreate, user_controller
+from ..controllers.setting import SettingCreate, setting_controller
+from ..core.exceptions import (
     DoesNotExist,
     DoesNotExistHandle,
     HTTPException,
@@ -18,9 +18,9 @@ from app.core.exceptions import (
     ResponseValidationError,
     ResponseValidationHandle,
 )
-from app.models.admin import Menu
-from app.schemas.menus import MenuType
-from app.settings.config import settings
+from ..models.admin import Menu
+from ..schemas.menus import MenuType
+from ..settings.config import settings
 
 from .middlewares import BackGroundTaskMiddleware
 

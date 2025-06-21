@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 
-from app.core.exceptions import SettingNotFound
-from app.core.init_app import (
+from .core.exceptions import SettingNotFound
+from .core.init_app import (
     init_menus,
     init_setting,
     init_superuser,

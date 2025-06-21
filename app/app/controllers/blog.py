@@ -1,8 +1,8 @@
 from typing import List, Optional
 
-from app.core.crud import CRUDBase
-from app.models.content import Blog
-from app.schemas.blogs import BlogCreate,BlogUpdate
+from ..core.crud import CRUDBase
+from ..models.content import Blog
+from ..schemas.blogs import BlogCreate,BlogUpdate
 
 from .category import category_controller
 

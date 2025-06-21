@@ -2,11 +2,11 @@ import logging
 
 from fastapi import APIRouter, Query
 from tortoise.expressions import Q
-from app.controllers.blog import blog_controller
-from app.controllers.category import category_controller
-from app.core.dependency import DependPermisson
-from app.schemas.base import Fail, Success, SuccessExtra
-from app.schemas.blogs import *
+from ....controllers.blog import blog_controller
+from ....controllers.category import category_controller
+from ....core.dependency import DependPermisson
+from ....schemas.base import Fail, Success, SuccessExtra
+from ....schemas.blogs import *
 
 logger = logging.getLogger(__name__)
 
@@ -75,7 +75,7 @@ async def create_blog(
     for category_id in blog_in.categories:
         category = await category_controller.model.filter(id=category_id)
         if len(category)>0 and category[0].parent_id!=0 and category[0].parent_id not in blog_in.categories:
-            blog_in.categories.append(category[0].parent_id)
+            blog_in.categories.app.append(category[0].parent_id)
     new_blog = await blog_controller.create(obj_in=blog_in.create_dict())
     await blog_controller.update_categories(new_blog, blog_in.categories)
     return Success(msg="Created Success")
@@ -88,7 +88,7 @@ async def update_blog(
     for category_id in blog_in.categories:
         category = await category_controller.model.filter(id=category_id)
         if len(category)>0 and category[0].parent_id!=0 and category[0].parent_id not in blog_in.categories:
-            blog_in.categories.append(category[0].parent_id)
+            blog_in.categories.app.append(category[0].parent_id)
     blog = await blog_controller.update(id=blog_in.id, obj_in=blog_in.update_dict())
     await blog_controller.update_categories(blog, blog_in.categories)
     return Success(msg="Updated Success")

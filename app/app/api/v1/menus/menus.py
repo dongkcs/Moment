@@ -2,9 +2,9 @@ import logging
 
 from fastapi import APIRouter, Query
 
-from app.controllers.menu import menu_controller
-from app.schemas.base import Fail, Success, SuccessExtra
-from app.schemas.menus import *
+from ....controllers.menu import menu_controller
+from ....schemas.base import Fail, Success, SuccessExtra
+from ....schemas.menus import *
 
 logger = logging.getLogger(__name__)
 
@@ -22,7 +22,7 @@ async def list_menu(
         child_menu = await menu_controller.model.filter(parent_id=menu.id).order_by("order")
         menu_dict = await menu.to_dict()
         menu_dict["children"] = [await obj.to_dict() for obj in child_menu]
-        res_menu.append(menu_dict)
+        res_menu.app.append(menu_dict)
     return SuccessExtra(data=res_menu, total=len(res_menu), page=page, page_size=page_size)
 
 

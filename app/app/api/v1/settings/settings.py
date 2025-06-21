@@ -2,10 +2,10 @@ import logging
 
 from fastapi import APIRouter, Query
 
-from app.controllers.setting import setting_controller
-from app.schemas.base import Fail, Success, SuccessExtra
-from app.schemas.settings import *
-from app.core.dependency import DependPermisson
+from ....controllers.setting import setting_controller
+from ....schemas.base import Fail, Success, SuccessExtra
+from ....schemas.settings import *
+from ....core.dependency import DependPermisson
 
 logger = logging.getLogger(__name__)
 

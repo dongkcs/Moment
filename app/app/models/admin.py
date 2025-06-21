@@ -1,6 +1,6 @@
 from tortoise import fields
 
-from app.schemas.menus import MenuType
+from ..schemas.menus import MenuType
 
 from .base import BaseModel, TimestampMixin
 

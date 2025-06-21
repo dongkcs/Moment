@@ -3,17 +3,17 @@ import time
 import boto3
 from fastapi import APIRouter, File, Query, UploadFile
 
-from app.controllers.user import UserController, user_controller
-from app.core.ctx import CTX_USER_ID
-from app.core.dependency import DependAuth
-from app.models.admin import  Menu, User
-from app.schemas.base import Fail, Success
-from app.schemas.login import *
-from app.schemas.users import UpdatePassword
-from app.settings import settings
-from app.utils.jwt import create_access_token
-from app.utils.password import get_password_hash, verify_password
-from app.controllers.setting import setting_controller
+from ....controllers.user import UserController, user_controller
+from ....core.ctx import CTX_USER_ID
+from ....core.dependency import DependAuth
+from ....models.admin import  Menu, User
+from ....schemas.base import Fail, Success
+from ....schemas.login import *
+from ....schemas.users import UpdatePassword
+from ....settings import settings
+from ....utils.jwt import create_access_token
+from ....utils.password import get_password_hash, verify_password
+from ....controllers.setting import setting_controller
 
 router = APIRouter()
 
@@ -54,15 +54,15 @@ async def get_user_menu():
     parent_menus: list[Menu] = []
     for menu in menus:
         if menu.parent_id == 0:
-            parent_menus.append(menu)
+            parent_menus.app.append(menu)
     res = []
     for parent_menu in parent_menus:
         parent_menu_dict = await parent_menu.to_dict()
         parent_menu_dict["children"] = []
         for menu in menus:
             if menu.parent_id == parent_menu.id:
-                parent_menu_dict["children"].append(await menu.to_dict())
-        res.append(parent_menu_dict)
+                parent_menu_dict["children"].app.append(await menu.to_dict())
+        res.app.append(parent_menu_dict)
     return Success(data=res)
 
 @router.post("/update_password", summary="更新用户密码", dependencies=[DependAuth])

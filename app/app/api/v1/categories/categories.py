@@ -2,10 +2,10 @@ import logging
 
 from fastapi import APIRouter, Query
 
-from app.controllers.category import category_controller
-from app.core.dependency import DependPermisson
-from app.schemas.base import Fail, Success, SuccessExtra
-from app.schemas.categories import *
+from ....controllers.category import category_controller
+from ....core.dependency import DependPermisson
+from ....schemas.base import Fail, Success, SuccessExtra
+from ....schemas.categories import *
 
 logger = logging.getLogger(__name__)
 
@@ -22,7 +22,7 @@ async def list_category(
         child_category = await category_controller.model.filter(parent_id=category.id).order_by("order")
         category_dict = await category.to_dict()
         category_dict["children"] = [await obj.to_dict() for obj in child_category]
-        res_category.append(category_dict)
+        res_category.app.append(category_dict)
     return SuccessExtra(data=res_category, total=len(res_category), page=page, page_size=page_size)
 
 @router.get("/get/id", summary="查看分类")

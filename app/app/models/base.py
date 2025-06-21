@@ -2,7 +2,7 @@ from datetime import datetime
 
 from tortoise import fields, models
 
-from app.settings import settings
+from ..settings import settings
 
 
 class BaseModel(models.Model):

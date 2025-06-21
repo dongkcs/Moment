@@ -1,8 +1,8 @@
 from typing import Optional
 
-from app.core.crud import CRUDBase
-from app.models.admin import Setting
-from app.schemas.settings import SettingCreate, SettingUpdate
+from ..core.crud import CRUDBase
+from ..models.admin import Setting
+from ..schemas.settings import SettingCreate, SettingUpdate
 
 
 class SettingController(CRUDBase[Setting, SettingCreate, SettingUpdate]):
