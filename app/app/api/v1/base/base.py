@@ -61,8 +61,8 @@ async def get_user_menu():
         parent_menu_dict["children"] = []
         for menu in menus:
             if menu.parent_id == parent_menu.id:
-                parent_menu_dict["children"].app.append(await menu.to_dict())
-        res.app.append(parent_menu_dict)
+                parent_menu_dict["children"].append(await menu.to_dict())
+        res.append(parent_menu_dict)
     return Success(data=res)
 
 @router.post("/update_password", summary="更新用户密码", dependencies=[DependAuth])
