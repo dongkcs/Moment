@@ -1,4 +1,4 @@
-FROM node:18.12.0-alpine3.16 as web
+FROM node:20-alpine AS web
 
 WORKDIR /opt/moment
 COPY /web ./web
