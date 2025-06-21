@@ -54,7 +54,7 @@ async def get_user_menu():
     parent_menus: list[Menu] = []
     for menu in menus:
         if menu.parent_id == 0:
-            parent_menus.app.append(menu)
+            parent_menus.append(menu)
     res = []
     for parent_menu in parent_menus:
         parent_menu_dict = await parent_menu.to_dict()
