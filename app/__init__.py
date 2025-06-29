@@ -74,8 +74,8 @@ async def init_setting():
 async def lifespan(app: FastAPI):
     logger.info("正在初始化应用...")
     await init_db()
-    # await init_superuser()
-    # await init_setting()
+    await init_superuser()
+    await init_setting()
 
     app.mount(
         "/assets",
